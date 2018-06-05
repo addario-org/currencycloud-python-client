@@ -5,7 +5,7 @@
       "request": {
         "body": {
           "encoding": "utf-8",
-          "string": "login_id=rjnienaber%40gmail.com&api_key=ef0fd50fca1fb14c1fab3a8436b9ecb65f02f129fd87eafa45ded8ae257528f0"
+          "string": "login_id=development%40currencycloud.com&api_key=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
         },
         "headers": {
           "Accept": "*/*",
@@ -16,7 +16,7 @@
           "User-Agent": "python-requests/2.14.2"
         },
         "method": "POST",
-        "uri": "https://devapi.thecurrencycloud.com/v2/authenticate/api"
+        "uri": "https://devapi.currencycloud.com/v2/authenticate/api"
       },
       "response": {
         "body": {
@@ -41,7 +41,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.thecurrencycloud.com/v2/authenticate/api"
+        "url": "https://devapi.currencycloud.com/v2/authenticate/api"
       }
     },
     {
@@ -60,7 +60,7 @@
           "X-Auth-Token": "bbdee49884324398110eca9f125cf067"
         },
         "method": "GET",
-        "uri": "https://devapi.thecurrencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
+        "uri": "https://devapi.currencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
       },
       "response": {
         "body": {
@@ -84,7 +84,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.thecurrencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
+        "url": "https://devapi.currencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
       }
     },
     {
@@ -105,7 +105,7 @@
           "X-Auth-Token": "bbdee49884324398110eca9f125cf067"
         },
         "method": "POST",
-        "uri": "https://devapi.thecurrencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
+        "uri": "https://devapi.currencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
       },
       "response": {
         "body": {
@@ -129,7 +129,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.thecurrencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
+        "url": "https://devapi.currencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
       }
     },
     {
@@ -148,7 +148,7 @@
           "X-Auth-Token": "bbdee49884324398110eca9f125cf067"
         },
         "method": "GET",
-        "uri": "https://devapi.thecurrencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
+        "uri": "https://devapi.currencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
       },
       "response": {
         "body": {
@@ -172,7 +172,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.thecurrencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
+        "url": "https://devapi.currencycloud.com/v2/contacts/16565245-1b65-464e-affa-58313192b54f"
       }
     }
   ],

@@ -5,7 +5,7 @@
       "request": {
         "body": {
           "encoding": "utf-8",
-          "string": "login_id=api.test.user1%40currencycloud.com&api_key=0a14256abc393cdc238672b2d42d54f5581937f3ee23b76d5cfa842f63f8364d"
+          "string": "login_id=development%40currencycloud.com&api_key=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
         },
         "headers": {
           "Accept": "*/*",
@@ -16,7 +16,7 @@
           "User-Agent": "python-requests/2.14.2"
         },
         "method": "POST",
-        "uri": "https://devapi.thecurrencycloud.com/v2/authenticate/api"
+        "uri": "https://devapi.currencycloud.com/v2/authenticate/api"
       },
       "response": {
         "body": {
@@ -41,7 +41,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.thecurrencycloud.com/v2/authenticate/api"
+        "url": "https://devapi.currencycloud.com/v2/authenticate/api"
       }
     },
     {
@@ -62,7 +62,7 @@
           "X-Auth-Token": "86218bb5fd12a6a7b9f6f63d48690bb3"
         },
         "method": "POST",
-        "uri": "https://devapi.thecurrencycloud.com/v2/transfers/create"
+        "uri": "https://devapi.currencycloud.com/v2/transfers/create"
       },
       "response": {
         "body": {
@@ -86,7 +86,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.thecurrencycloud.com/v2/transfers/create"
+        "url": "https://devapi.currencycloud.com/v2/transfers/create"
       }
     }
   ],
