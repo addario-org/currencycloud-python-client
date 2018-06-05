@@ -12,7 +12,7 @@ setup(
     name='currency_cloud',
     version='1.1.0',
     license='MIT',
-    description="Python SDK for the Currency Cloud API.",
+    description="Python SDK for the Currencycloud API.",
     long_description='',
 
     author='Francesco Boffa',
@@ -25,7 +25,7 @@ setup(
     include_package_data=True,
 
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
@@ -37,6 +37,8 @@ setup(
         "Programming Language :: Python :: 3.2",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
