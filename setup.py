@@ -10,7 +10,7 @@ from setuptools import setup
 
 setup(
     name='currency_cloud',
-    version='1.1.0',
+    version='2.2.0',
     license='MIT',
     description="Python SDK for the Currencycloud API.",
     long_description='',
@@ -31,10 +31,8 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.2",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
@@ -44,6 +42,6 @@ setup(
     ],
 
     keywords=[],
-    install_requires=['requests'],
+    install_requires=['requests', 'PyYAML', 'deprecation', 'pytest', 'mock', 'requests-mock', 'betamax', 'betamax-serializers'],
     test_suite='tests'
 )
