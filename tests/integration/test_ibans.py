@@ -10,6 +10,8 @@ from currencycloud.resources import *
 
 class TestIbans:
     def setup_method(self, method):
+        # TODO: To run against real server please delete ../fixtures/vcr_cassettes/* and replace
+        # login_id and api_key with valid credentials before running the tests
         login_id = 'development@currencycloud.com'
         api_key = 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
         environment = Config.ENV_DEMO

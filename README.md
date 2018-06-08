@@ -47,7 +47,6 @@ script:
 This library aims to support and is [tested](https://travis-ci.org/CurrencyCloud/currencycloud-python)
 under the following Python implementations:
 -  CPython 2.7
--  CPython 3.3
 -  CPython 3.4
 -  CPython 3.5
 -  CPython 3.6
