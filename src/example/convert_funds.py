@@ -5,6 +5,7 @@ If you have any queries or you require support, please contact our Support team 
 '''
 
 import currencycloud
+from currencycloud.errors import ApiError
 
 '''
 Convert funds from one currency to another
@@ -32,12 +33,15 @@ client = currencycloud.Client(login_id, api_key, environment)
 Check how much it will cost to buy 10,000 Euros using funds from your Pound Sterling balance, by making a call to the
 Get Detailed Rates endpoint
 '''
-rate = client.rates.detailed(buy_currency='EUR', sell_currency='GBP', fixed_side='buy', amount=10000)
-print("To buy {0} {1} you will need to sell {2} {3}. This quote will be valid until {4}".format(rate.client_buy_amount,
-                                                                                                rate.client_buy_currency,
-                                                                                                rate.client_sell_amount,
-                                                                                                rate.client_sell_currency,
-                                                                                                rate.settlement_cut_off_time))
+try:
+    rate = client.rates.detailed(buy_currency='EUR', sell_currency='GBP', fixed_side='buy', amount=10000)
+    print("To buy {0} {1} you will need to sell {2} {3}. This quote will be valid until {4}".format(rate.client_buy_amount,
+                                                                                                    rate.client_buy_currency,
+                                                                                                    rate.client_sell_amount,
+                                                                                                    rate.client_sell_currency,
+                                                                                                    rate.settlement_cut_off_time))
+except ApiError as e:
+    print("Detail Quote encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 On success, the response payload will contain details of Currencycloud’s quotation to make the conversion.
@@ -46,15 +50,18 @@ On success, the response payload will contain details of Currencycloud’s quota
 '''
 If you’re happy with the quote, you may create the conversion by calling the Create Conversion endpoint.
 '''
-conversion = client.conversions.create(buy_currency='EUR',
-                                       sell_currency='GBP',
-                                       amount='10000',
-                                       fixed_side='buy',
-                                       reason='Top up Euros balance',
-                                       term_agreement='true')
-print("Conversion Id {0} for {1} {2} created succesfully".format(conversion.id,
-                                                                 conversion.client_buy_amount,
-                                                                 conversion.buy_currency))
+try:
+    conversion = client.conversions.create(buy_currency='EUR',
+                                           sell_currency='GBP',
+                                           amount='10000',
+                                           fixed_side='buy',
+                                           reason='Top up Euros balance',
+                                           term_agreement='true')
+    print("Conversion Id {0} for {1} {2} created succesfully".format(conversion.id,
+                                                                     conversion.client_buy_amount,
+                                                                     conversion.buy_currency))
+except ApiError as e:
+    print("Conversion encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 On success, the payload of the response message will contain full details of the conversion as recorded against your
@@ -69,5 +76,8 @@ GBP balance to cover the client_sell_amount. Please use your Cash Manager to top
 It is good security practice to retire authentication tokens when they are no longer needed, rather than let them
 expire. Send a request to the Logout endpoint to terminate an authentication token immediately.
 '''
-logoff = client.auth.close_session()
-print("Session closed")
+try:
+    logoff = client.auth.close_session()
+    print("Session closed")
+except ApiError as e:
+    print("Logout encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))

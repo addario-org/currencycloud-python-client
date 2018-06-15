@@ -5,6 +5,7 @@ If you have any queries or you require support, please contact our Support team 
 '''
 
 import currencycloud
+from currencycloud.errors import ApiError
 
 '''
 Checking your balances
@@ -25,8 +26,11 @@ client = currencycloud.Client(login_id, api_key, environment)
 2. Check your balance for a specific currency
 To find out how many Euros you have, call the Get Balance endpoint, passing EUR as the third URI path parameter.
 '''
-balance = client.balances.for_currency('EUR')
-print("Your Euro balance is: €{0}".format(balance.amount))
+try:
+    balance = client.balances.for_currency('EUR')
+    print("Your Euro balance is: €{0}".format(balance.amount))
+except ApiError as e:
+    print("Check Balance encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 To get a balance for any of your client sub-accounts, simply provide the sub-account UUID via the on_behalf_of query
@@ -38,9 +42,12 @@ string parameter.
 Alternatively, the Find Balances endpoint will tell you the value of all foreign currencies that you hold in your main
 Currencycloud account.
 '''
-balances = client.balances.find()
-for element in balances:
-    print("Your {0} balance is {1}".format(element.currency, element.amount))
+try:
+    balances = client.balances.find()
+    for element in balances:
+        print("Your {0} balance is {1}".format(element.currency, element.amount))
+except ApiError as e:
+    print("Detailed Balances encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 To fetch balances for any of your client sub-accounts, simply provide the sub-account UUID via the on_behalf_of query
@@ -52,5 +59,8 @@ string parameter.
 It is good security practice to retire authentication tokens when they are no longer needed, rather than let them
 expire. Send a request to the Logout endpoint to terminate an authentication token immediately.
 '''
-logoff = client.auth.close_session()
-print("Session closed")
+try:
+    logoff = client.auth.close_session()
+    print("Session closed")
+except ApiError as e:
+    print("Logout encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))

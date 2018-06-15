@@ -5,6 +5,7 @@ If you have any queries or you require support, please contact our Support team 
 '''
 
 import currencycloud
+from currencycloud.errors import ApiError
 
 '''
 Check foreign exchange rates
@@ -40,11 +41,13 @@ indicates how much of the quote currency is needed to buy one unit of the base c
 For example, to find out how many Pound Sterling (GBP) are needed to buy EUR €1.00, make the following call. Note the
 use of the currency pair “EURGBP”.
 '''
-
-rate = client.rates.find(currency_pair='EURGBP')
-print("The {0} conversion is {1} to bid and {2} to offer".format(rate.currencies[0].currency_pair,
-                                                                 rate.currencies[0].bid,
-                                                                 rate.currencies[0].offer))
+try:
+    rate = client.rates.find(currency_pair='EURGBP')
+    print("The {0} conversion is {1} to bid and {2} to offer".format(rate.currencies[0].currency_pair,
+                                                                     rate.currencies[0].bid,
+                                                                     rate.currencies[0].offer))
+except ApiError as e:
+    print("Basic Exchange encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 The two rates in the response are the “bid” and “offer” prices. The bid price is applicable if you are selling the base
@@ -57,12 +60,15 @@ To find out exactly how much it will cost you to trade funds in one currency for
 Get Detailed Rates endpoint. For example, to get a quote buy 10,000 Euros using funds from your Pound Sterling
 balance, make the following call:
 '''
-rate = client.rates.detailed(buy_currency='EUR', sell_currency='GBP', fixed_side='buy', amount=10000)
-print("To buy {0} {1} you will need to sell {2} {3}. This quote will be valid until {4}".format(rate.client_buy_amount,
-                                                                                                rate.client_buy_currency,
-                                                                                                rate.client_sell_amount,
-                                                                                                rate.client_sell_currency,
-                                                                                                rate.settlement_cut_off_time))
+try:
+    rate = client.rates.detailed(buy_currency='EUR', sell_currency='GBP', fixed_side='buy', amount=10000)
+    print("To buy {0} {1} you will need to sell {2} {3}. This quote will be valid until {4}".format(rate.client_buy_amount,
+                                                                                                    rate.client_buy_currency,
+                                                                                                    rate.client_sell_amount,
+                                                                                                    rate.client_sell_currency,
+                                                                                                    rate.settlement_cut_off_time))
+except ApiError as e:
+    print("Detail Quote encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 On success, the response payload will contain details of Currencycloud’s quotation to make the conversion.
@@ -89,5 +95,8 @@ appearing first in the list will be the first in the currency pair.
 It is good security practice to retire authentication tokens when they are no longer needed, rather than let them
 expire. Send a request to the Logout endpoint to terminate an authentication token immediately.
 '''
-logoff = client.auth.close_session()
-print("Session closed")
+try:
+    logoff = client.auth.close_session()
+    print("Session closed")
+except ApiError as e:
+    print("Logout encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))

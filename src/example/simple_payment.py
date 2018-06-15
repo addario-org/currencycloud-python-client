@@ -5,6 +5,7 @@ If you have any queries or you require support, please contact our Support team 
 '''
 
 import currencycloud
+from currencycloud.errors import ApiError
 import uuid
 
 '''
@@ -35,16 +36,22 @@ client = currencycloud.Client(login_id, api_key, environment)
 2. Check available balances
 To find out how many Euros you have, call the Get Balance endpoint, passing EUR as the third URI path parameter.
 '''
-balance = client.balances.for_currency('EUR')
-print("Your Euro balance is: €{0}".format(balance.amount))
+try:
+    balance = client.balances.for_currency('EUR')
+    print("Your Euro balance is: €{0}".format(balance.amount))
+except ApiError as e:
+    print("Check Balance encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 You can also check the balances for all foreign currencies that you hold in your Currencycloud account by calling the
 Find Balances endpoint
 '''
-balances = client.balances.find()
-for element in balances:
-    print("Your {0} balance is {1}".format(element.currency, element.amount))
+try:
+    balances = client.balances.find()
+    for element in balances:
+        print("Your {0} balance is {1}".format(element.currency, element.amount))
+except ApiError as e:
+    print("Check Balances encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 3. Check payment requirements
@@ -63,11 +70,14 @@ beforehand.
 First, check what details are required to make a regular payment in Euros to a beneficiary with a bank account in
 Germany. To do that, call the Get Beneficiary Requirements endpoint.
 '''
-beneficiary_details = client.reference.beneficiary_required_details(currency='EUR', bank_account_country='DE')
-print("Beneficiary required details: ", end='')
-for element in beneficiary_details[0]:
-        print(element + " ", end='')
-print()
+try:
+    beneficiary_details = client.reference.beneficiary_required_details(currency='EUR', bank_account_country='DE')
+    print("Beneficiary required details: ", end='')
+    for element in beneficiary_details[0]:
+            print(element + " ", end='')
+    print()
+except ApiError as e:
+    print("Beneficiary Details encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 The response tells us that, to make a regular payment to a German bank account in Euros, we need two pieces of
@@ -80,17 +90,22 @@ an individual. Either way, the same information is required.
 If you know the required details, you can go ahead and create a record for the beneficiary via the
 Create Beneficiary endpoint.
 '''
-beneficiary = client.beneficiaries.create(name='Acme GmbH',
-                                          bank_account_holder_name='Acme GmbH',
-                                          currency='EUR',
-                                          beneficiary_country='DE',
-                                          bank_country='DE',
-                                          bic_swift='COBADEFF',
-                                          iban='DE89370400440532013000')
-print("Beneficiary Id {0} for {1}, receiving {2} in {3} created successfully".format(beneficiary.id,
-                                                                                     beneficiary.name,
-                                                                                     beneficiary.currency,
-                                                                                     beneficiary.bank_country))
+beneficiary_id = None
+try:
+    beneficiary = client.beneficiaries.create(name='Acme GmbH',
+                                              bank_account_holder_name='Acme GmbH',
+                                              currency='EUR',
+                                              beneficiary_country='DE',
+                                              bank_country='DE',
+                                              bic_swift='COBADEFF',
+                                              iban='DE89370400440532013000')
+    beneficiary_id = beneficiary.id
+    print("Beneficiary Id {0} for {1}, receiving {2} in {3} created successfully".format(beneficiary_id,
+                                                                                         beneficiary.name,
+                                                                                         beneficiary.currency,
+                                                                                         beneficiary.bank_country))
+except ApiError as e:
+    print("Beneficiary encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 If the beneficiary is successfully created, the response message will contain full details about the beneficiary as
@@ -103,16 +118,19 @@ the beneficiary, in the next step.
 Authorize a payment by calling the Create Payment endpoint. Optionally, you may provide an idempotency key (via the
 unique_request_id parameter). This helps protect against accidental duplicate payments.
 '''
-payment = client.payments.create(currency='EUR',
-                                 beneficiary_id=beneficiary.id,
-                                 amount='10000',
-                                 reason='Invoice Payment',
-                                 payment_type='regular',
-                                 reference='2018-014',
-                                 unique_request_id=uuid.uuid4())
-print("Payment Id {0} for {1} {2} created succesfully".format(payment.id,
-                                                              payment.amount,
-                                                              payment.currency))
+try:
+    payment = client.payments.create(currency='EUR',
+                                     beneficiary_id=beneficiary_id,
+                                     amount='10000',
+                                     reason='Invoice Payment',
+                                     payment_type='regular',
+                                     reference='2018-014',
+                                     unique_request_id=uuid.uuid4())
+    print("Payment Id {0} for {1} {2} created succesfully".format(payment.id,
+                                                                  payment.amount,
+                                                                  payment.currency))
+except ApiError as e:
+    print("Payment encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
 
 '''
 If the payment is successfully queued, the response payload will contain all the information about the payment as
@@ -130,5 +148,8 @@ your account balance is topped up.
 It is good security practice to retire authentication tokens when they are no longer needed, rather than let them
 expire. Send a request to the Logout endpoint to terminate an authentication token immediately.
 '''
-logoff = client.auth.close_session()
-print("Session closed")
+try:
+    logoff = client.auth.close_session()
+    print("Session closed")
+except ApiError as e:
+    print("Logoff encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
