@@ -71,6 +71,58 @@ This conversion will settle automatically on the settlement_date as long as ther
 GBP balance to cover the client_sell_amount. Please use your Cash Manager to top up your GBP balance if necessary.
 '''
 
+try:
+    conversions = client.conversions.split_preview('c805aa35-9bd3-4afe-ade2-d341e551aa16', amount='100')
+    print(f'Your conversion after successful split preview: ')
+    print('Parent conversion ID: ' + conversions['parent_conversion'].get('id'))
+    print('Parent conversion buy currency: ' + conversions['parent_conversion'].get('buy_currency') + " amount " + conversions['parent_conversion'].get('buy_amount'))
+    print('Parent conversion sell currency: ' + conversions['parent_conversion'].get('sell_currency') + " amount " + conversions['parent_conversion'].get('sell_amount'))
+    print('Child conversion buy currency: ' + conversions['child_conversion'].get('sell_currency') + " amount " + conversions['child_conversion'].get('sell_amount'))
+    print('Child conversion sell currency: ' + conversions['child_conversion'].get('buy_currency') + " amount " + conversions['child_conversion'].get('buy_amount'))
+except ApiError as e:
+    print("Conversion encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
+
+
+try:
+    conversions = client.conversions.split_history('c805aa35-9bd3-4afe-ade2-d341e551aa16')
+    print(f'Your conversion after successful split history: ')
+    for element in conversions['child_conversions']:
+        print('Child conversion ID: ' + element.get('id'))
+        print('Child conversion buy currency: ' + element.get('sell_currency') + " amount " + element.get('sell_amount'))
+        print('Child conversion sell currency: ' + element.get('buy_currency') + " amount " + element.get('buy_amount'))
+
+except ApiError as e:
+    print("Conversion encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
+
+try:
+    change_date_quote = client.conversions.date_change_quote('2b436517-619b-4abe-a591-821dd31b264f',
+                                                             new_settlement_date='2018-10-29T16:30:00+00:00')
+    print(f'Data change quote for conversion with id: + {change_date_quote.conversion_id} was successful.')
+    print(f'Old settlement date: {change_date_quote.old_settlement_date}')
+    print(f'New settlement data: {change_date_quote.new_settlement_date}')
+
+except ApiError as e:
+    print("Conversion encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
+
+try:
+    cancellation_quote = client.conversions.cancellation_quote('63298593-bd8d-455d-8ee8-2f85dd390f2f')
+    print(f'Successful Cancellation Quote,\nAmount: {cancellation_quote.amount},\nCurrency: {cancellation_quote.currency}')
+except ApiError as e:
+    print("Conversion encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
+
+try:
+    profit_and_loss = client.conversions.profit_and_loss()
+    print(f'Here is all the information about profit and loss of your conversions:')
+    for element in profit_and_loss:
+        if float(element.amount) > 0:
+            print(f'Your profit for conversion with id {element.conversion_id}, as result of {element.event_type}, '
+                  f'is {element.amount} {element.currency}')
+        elif float(element.amount) < 0:
+            print(f'Your loss for conversion with id {element.conversion_id}, as result of {element.event_type}, is '
+                  f'{element.amount} {element.currency}')
+except ApiError as e:
+    print("Conversion encountered an error: {0} (HTTP code {1})".format(e.code, e.status_code))
+
 '''
 3. Logout
 It is good security practice to retire authentication tokens when they are no longer needed, rather than let them

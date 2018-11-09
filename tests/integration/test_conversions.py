@@ -57,3 +57,94 @@ class TestConversions:
 
             assert conversion.id == "a26ffc86-c0f6-45d8-8c1c-6a3e579ce974"
             assert conversion.client_buy_amount == "1000.00"
+
+    def test_actions_can_cancel(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/cancel')
+
+            response = self.client.conversions.cancel("84033366-2135-4fc9-8016-41a7adba463e")
+
+            assert response is not None
+            assert response.conversion_id == "84033366-2135-4fc9-8016-41a7adba463e"
+
+    def test_actions_can_date_change(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/date_change')
+
+            response = self.client.conversions.date_change("d3c7d733-7c2f-443d-a082-4c728157b99f",
+                                                           new_settlement_date="2019-04-02T13:00:00+00:00")
+
+            assert response is not None
+            assert response.conversion_id == "d3c7d733-7c2f-443d-a082-4c728157b99f"
+            assert response.new_settlement_date == "2019-04-02T13:00:00+00:00"
+
+    def test_actions_can_split(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/split')
+
+            response = self.client.conversions.split("d3c7d733-7c2f-443d-a082-4c728157b99f",
+                                                           amount="100")
+
+            assert response is not None
+            assert response.parent_conversion.get("id") == "d3c7d733-7c2f-443d-a082-4c728157b99f"
+            assert response.child_conversion.get("id") is not None
+
+    def test_actions_can_split_preview(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/split_preview')
+
+            response = self.client.conversions.split_preview("c805aa35-9bd3-4afe-ade2-d341e551aa16",
+                                                             amount="100")
+
+            assert response is not None
+            assert response.parent_conversion.get("id") == "c805aa35-9bd3-4afe-ade2-d341e551aa16"
+            assert response.child_conversion.get("sell_amount") == '100.00'
+
+    def test_actions_can_split_history(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/split_history')
+
+            response = self.client.conversions.split_history("c805aa35-9bd3-4afe-ade2-d341e551aa16")
+
+            assert response is not None
+            for element in response.child_conversions:
+                assert element.get('id') is not None
+                assert element.get('sell_amount') == '100.00'
+                assert element.get('short_reference') is not None
+
+    def test_actions_can_quote_date_change(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/quote_date_change')
+
+            response = self.client.conversions.date_change_quote('2b436517-619b-4abe-a591-821dd31b264f',
+                                                                 new_settlement_date='2018-10-29T16:30:00+00:00')
+            assert response is not None
+            assert response.conversion_id == '2b436517-619b-4abe-a591-821dd31b264f'
+            assert response.new_settlement_date == '2018-10-29T16:30:00+00:00'
+
+    def test_actions_can_quote_cancellation(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/cancellation_quote')
+
+            response = self.client.conversions.cancellation_quote('63298593-bd8d-455d-8ee8-2f85dd390f2f')
+
+            assert response is not None
+            assert response.amount is not None
+            assert response.currency is not None
+            assert response.event_date_time is not None
+
+    def test_action_can_retrieve_profit_and_loss(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('conversions/profit_and_loss')
+
+            response = self.client.conversions.profit_and_loss()
+
+            assert response is not None
+            for element in response:
+                assert element.account_id is not None
+                assert element.contact_id is not None
+                assert element.conversion_id is not None
+                assert element.event_type is not None
+                assert element.amount is not None
+                assert element.currency is not None
+                assert element.event_date_time is not None
