@@ -218,7 +218,9 @@ Once a feature has been marked as deprecated, we no longer develop the code or i
 ```
 
 # Release History
-* [3.0.0] -   Remove deprecated functions, update unit tests, update dependencies and update copyright
+* [4.0.3] - Add Account Payment Charges Settings and Payment Delivery Date endpoints; remove deprecated VAN endpoint; update dependencies
+* [3.0.1] - Minor bug fixes
+* [3.0.0] - Remove deprecated functions, update unit tests, update dependencies and update copyright
 * [2.7.5] - Add new Sender and Reporting endpoints; add Conversion Cancel, Conversion Split and Conversion Date Change; add Payment Submission, Payment Confirmation and Payment Authorization; fix minor bugs; deprecate obsolete endpoints and add support for Python 3.7
 * [2.2.0] - Update project and dependencies to latest versions; add PayerRequiredDetails; add HTTP 403 test; update environment constants (breaking change), url and sample credentials; add Virtual Accounts and IBANs; remove unused imports
 * [1.0.0] - Make the SDK thread safe
@@ -227,5 +229,5 @@ Once a feature has been marked as deprecated, we no longer develop the code or i
 We actively support the latest version of the SDK. We support the immediate previous version on best-efforts basis. All other versions are no longer supported nor maintained.
 
 ## Copyright
-Copyright (c) 2015-2018 Currencycloud. See [LICENSE](LICENSE.md) for
+Copyright (c) 2015-2019 Currencycloud. See [LICENSE](LICENSE.md) for
 details.
