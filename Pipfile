@@ -9,7 +9,7 @@ deprecation = "== 2.1.0"
 
 [dev-packages]
 pytest = "==4.5.0"
-mock = "==5.4.3"
+mock = "==4.0.2"
 tox = "==3.16.1"
 requests-mock = "==1.8.0"
 betamax = "==0.8.1"
