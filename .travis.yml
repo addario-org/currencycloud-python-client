@@ -1,40 +1,37 @@
 sudo: false
-
 language: python
-
 env:
   global:
-    - PYTHONWARNINGS=always::DeprecationWarning
-
+  - PYTHONWARNINGS=always::DeprecationWarning
 matrix:
   include:
-    - python: 3.3
-      env: TOXENV=py33
-      dist: trusty
-    - python: 3.4
-      env: TOXENV=py34
-      dist: trusty
-    - python: 3.5
-      env: TOXENV=py35
-      dist: trusty
-    - python: 3.6
-      env: TOXENV=py36
-      dist: trusty
-    - python: 3.7
-      env: TOXENV=py37
-      dist: xenial
-    - python: 3.8
-      env: TOXENV=py38
-      dist: xenial
-
+  - python: 3.3
+    env: TOXENV=py33
+    dist: trusty
+  - python: 3.4
+    env: TOXENV=py34
+    dist: trusty
+  - python: 3.5
+    env: TOXENV=py35
+    dist: trusty
+  - python: 3.6
+    env: TOXENV=py36
+    dist: trusty
+  - python: 3.7
+    env: TOXENV=py37
+    dist: xenial
+  - python: 3.8
+    env: TOXENV=py38
+    dist: xenial
   allow_failures:
-    - env: TOXENV=py33
-    - env: TOXENV=py34
-    - env: TOXENV=py35
-
+  - env: TOXENV=py33
+  - env: TOXENV=py34
+  - env: TOXENV=py35
 install:
-  - pip install virtualenv
-  - pip install tox-travis
-
+- pip install virtualenv
+- pip install tox-travis
 script:
-  - tox -e $TOXENV
+- tox -e $TOXENV
+notifications:
+  slack:
+    secure: mLTmglwSSMHvAIrFOW7XT8wJXn2f0jIWc5zqj1lPGChBvlHp07DPN4QAYDUvmOa1r1tXtPpvVf2tw0DsOIZFMdgCTkrdS9TRguiDClLlcOMproUlKErZJwUg3F3esS175rRiDl/+KSrw2nFYRjxEeaGJUUAlBDSmbIIxqp2nnSzZDDCZDVXXKR2ZeK4dtk/i9sU6MUjntK2kTZqkIIC80x9DPxCJ2BOBFR4Jvpv2I7+HHWZ5FVDkgRGeaDmH/AT2MERdCoIp0p0ZvGetYsUUgr0Qmgj2/k4rV1UFgSRCDPLDcmFp7ncA/3lwpykmMCgwUtDEbTxSSttwyIB3EOvrmP1AJbo1JD71h6hG8hAbjgnUbVkBC2CwtK9PYeC+sLpd0PYou7lPy0qtEnig+EZOkzIb7OuvKeIG1YJAVuzOXJD84mFc0yI4f1/Nmf3l6c2U3Lqr7rZJXJplredifXLDjXU45aVcShw6J04SgFflm44yyLtRRjttut3Ht4rcDMRuPR0iJHU3ve8dd/+XLIFkQWv94QBmlh3QMPOM+5gQkNeNJbO3ocwS5v5+m6Yfnm7fUD00mHQRe+DYrWhw8iHqtrtUumHoKU3pt6fYXQWyyvtTX/UZKTeng3xWNbtcx4Yglmr9sI2AEj8BKFQ6msFTVtYSAIX7Jb85a1uNDDa5ePs=
