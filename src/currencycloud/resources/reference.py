@@ -23,3 +23,12 @@ class PayerRequiredDetails(Resource):
 
 class PaymentPurposeCode(Resource):
     pass
+
+
+class BankDetails(Resource):
+    pass
+
+
+class PaymentFeeRule(Resource):
+    pass
+

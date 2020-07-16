@@ -117,3 +117,74 @@ class TestReference:
             assert purpose_code.currency == 'CNY'
             assert purpose_code.entity_type == 'company'
             assert purpose_code.purpose_code == 'current_account_payment'
+
+    def test_reference_can_retrieve_bank_details(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('reference/can_retrieve_bank_details')
+
+            details = self.client.reference.bank_details(identifier_type="iban", identifier_value="GB19TCCL00997901654515")
+
+            assert isinstance(details, BankDetails)
+
+            assert details.account_number == "GB19TCCL00997901654515"
+            assert details.bank_address == "12 STEWARD STREET  THE STEWARD BUILDING FLOOR 0"
+            assert details.bank_branch == ""
+            assert details.bank_city == "LONDON"
+            assert details.bank_country == "UNITED KINGDOM"
+            assert details.bank_country_ISO == "GB"
+            assert details.bank_name == "THE CURRENCY CLOUD LIMITED"
+            assert details.bank_post_code == "E1 6FQ"
+            assert details.bank_state == "LONDON"
+            assert details.bic_swift == "TCCLGB22XXX"
+            assert details.currency is None
+            assert details.identifier_type == "iban"
+            assert details.identifier_value == "GB19TCCL00997901654515"
+
+    def test_reference_can_retrieve_payment_fee_rules(self):
+        with Betamax(self.client.config.session) as betamax:
+            betamax.use_cassette('reference/can_retrieve_payment_fee_rules')
+
+            payment_fee_rules1 = self.client.reference.payment_fee_rules()
+            assert len(payment_fee_rules1) == 3
+
+            fee_rule1_1 = payment_fee_rules1[0]
+            assert isinstance(fee_rule1_1, PaymentFeeRule)
+            assert fee_rule1_1.charge_type == "shared"
+            assert fee_rule1_1.fee_amount == "2.00"
+            assert fee_rule1_1.fee_currency == "AED"
+            assert fee_rule1_1.payment_type == "priority"
+
+            fee_rule1_2 = payment_fee_rules1[1]
+            assert isinstance(fee_rule1_2, PaymentFeeRule)
+            assert fee_rule1_2.charge_type == "shared"
+            assert fee_rule1_2.fee_amount == "12.00"
+            assert fee_rule1_2.fee_currency == "USD"
+            assert fee_rule1_2.payment_type == "regular"
+
+            fee_rule1_3 = payment_fee_rules1[2]
+            assert isinstance(fee_rule1_3, PaymentFeeRule)
+            assert fee_rule1_3.charge_type == "ours"
+            assert fee_rule1_3.fee_amount == "5.25"
+            assert fee_rule1_3.fee_currency == "GBP"
+            assert fee_rule1_3.payment_type == "priority"
+
+            payment_fee_rules2 = self.client.reference.payment_fee_rules(payment_type='regular')
+            assert len(payment_fee_rules2) == 1
+
+            fee_rule2_1 = payment_fee_rules2[0]
+            assert isinstance(fee_rule2_1, PaymentFeeRule)
+            assert fee_rule2_1.charge_type == "shared"
+            assert fee_rule2_1.fee_amount == "12.00"
+            assert fee_rule2_1.fee_currency == "USD"
+            assert fee_rule2_1.payment_type == "regular"
+
+            payment_fee_rules3 = self.client.reference.payment_fee_rules(charge_type='ours')
+            assert len(payment_fee_rules3) == 1
+
+            fee_rule3_1 = payment_fee_rules3[0]
+            assert isinstance(fee_rule3_1, PaymentFeeRule)
+            assert fee_rule3_1.charge_type == "ours"
+            assert fee_rule3_1.fee_amount == "5.25"
+            assert fee_rule3_1.fee_currency == "GBP"
+            assert fee_rule3_1.payment_type == "priority"
+
