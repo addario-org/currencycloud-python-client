@@ -60,31 +60,28 @@
           "X-Auth-Token": "9a80cab6e3b509c64ed7243228ec3c47"
         },
         "method": "GET",
-        "uri": "https://devapi.currencycloud.com/v2/accounts/find?brand=currencycloud&per_page=1"
+        "uri": "https://devapi.currencycloud.com/v2/funding_accounts/find?currency=GBP&per_page=5"
       },
       "response": {
         "body": {
-          "base64_string": "H4sIAAAAAAAAA2ySQY8bIQyF/0rkMyPBZGejcm4PlXrc26pCBDwTVBaQMVFGUf57NdlkJ4165OPZfnr2GaxzuSWuoN/PEDxokHLbD/2r6gbVq06qrexGNYydlH2vvr30u+1uAHEvNMl+IGj4mRhjDBMm3vxIx0A5fWDiuvn19n0DAvZk09LdNSJMbnYxNw8C5tzIEI64UASdWowCKltuFTRgsvuIi7AyIfJd4ALPj2I0mUyhfAwPXa4G6UtXcmUbjct+nVMIrTe8DAEN48lNhsaT8TjaFhkERJxsNJg48Gx4LmtzQsvojf3y1Ip/IsEvhWNwlkNO/5Q/fR1tbKurQyZ+DAXUVvbypZNSSrVkX4Jhsj6kCTRTQwE5xZDwmZZD/g+k7LBWw4dA3hRLPJuxJV9BjzZWFFCROeKyv5tn2Lf4By6/BRQ7hXT1DPoMnPkzHQpYQe9eh524wWKnFX1una8QtBJQkB4ehMeQW72RTglIeLqrewGZPNJyPGvmN2hsdcZjdaDBVgeXy18AAAD//wMAXHr0k9MCAAA=",
           "encoding": "utf-8",
-          "string": ""
+          "string": "{\"funding_accounts\":[{\"id\":\"b7981972-8e29-485b-8a4a-9643fc6ae3sa\",\"account_id\":\"8d98bdc8-e8e3-47dc-bd08-3dd0f4f7ea7b\",\"account_number\":\"012345678\",\"account_number_type\":\"account_number\",\"account_holder_name\":\"Jon Doe\",\"bank_name\":\"Starling\",\"bank_address\":\"3rd floor, 2 Finsbury Avenue, London, EC2M 2PP, GB\",\"bank_country\":\"UK\",\"currency\":\"GBP\",\"payment_type\":\"regular\",\"routing_code\":\"010203\",\"routing_code_type\":\"sort_code\",\"created_at\":\"2018-05-14T14:18:30+00:00\",\"updated_at\":\"2018-05-14T14:19:30+00:00\"}],\"pagination\":{\"total_entries\":1,\"total_pages\":1,\"current_page\":1,\"per_page\":5,\"previous_page\":-1,\"next_page\":-1,\"order\":\"created_at\",\"order_asc_desc\":\"desc\"}}"
         },
         "headers": {
-          "CF-RAY": "35f4dea07a536a0d-LHR",
-          "Connection": "keep-alive",
-          "Content-Encoding": "gzip",
-          "Content-Type": "application/json;charset=utf-8",
-          "Date": "Mon, 15 May 2017 08:53:56 GMT",
-          "Server": "cloudflare-nginx",
-          "Transfer-Encoding": "chunked",
-          "Vary": "Origin",
-          "X-Content-Type-Options": "nosniff",
-          "X-Request-Id": "3316241625502707855"
-        },
+            "CF-RAY": "35f588852a6b0cd1-LHR",
+            "Connection": "keep-alive",
+            "Content-Type": "application/json;charset=utf-8",
+            "Date": "Mon, 15 May 2017 10:49:54 GMT",
+            "Server": "cloudflare-nginx",
+            "Vary": "Origin",
+            "X-Content-Type-Options": "nosniff",
+            "X-Request-Id": "3316300000397070898"
+          },
         "status": {
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.currencycloud.com/v2/accounts/find?brand=currencycloud&per_page=1"
+        "url": "https://devapi.currencycloud.com/v2/funding_accounts/find?currency=GBP&per_page=5"
       }
     }
   ],

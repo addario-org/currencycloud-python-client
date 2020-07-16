@@ -1,6 +1,6 @@
 # currencycloud-python
-[![Build Status](https://travis-ci.org/CurrencyCloud/currencycloud-python.png?branch=master)](https://travis-ci.org/CurrencyCloud/currencycloud-python)
 [![PyPi Status](https://img.shields.io/pypi/v/currency-cloud.svg)](https://pypi.python.org/pypi/currency-cloud)
+[![Build Status](https://travis-ci.org/EAddario/python-master.svg?branch=master)](https://travis-ci.org/github/EAddario/python-master)
 
 # Currencycloud
 This is the official Python SDK for v2 of Currencycloud's API.
@@ -218,6 +218,10 @@ Once a feature has been marked as deprecated, we no longer develop the code or i
 ```
 
 # Release History
+* [4.5.0] - Add top-up margin balance endpoint
+* [4.4.1] - Add funding accounts endpoint
+* [4.3.7] - Update payments endpoints for payment fee parameters
+* [4.1.0] - Add Bank Details endpoint
 * [4.0.3] - Add Account Payment Charges Settings and Payment Delivery Date endpoints; remove deprecated VAN endpoint; update dependencies
 * [3.0.1] - Minor bug fixes
 * [3.0.0] - Remove deprecated functions, update unit tests, update dependencies and update copyright

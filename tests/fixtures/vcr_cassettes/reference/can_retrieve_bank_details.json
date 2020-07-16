@@ -5,7 +5,8 @@
       "request": {
         "body": {
           "encoding": "utf-8",
-          "string": "login_id=development%40currencycloud.com&api_key=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+          "base64_string": "H4sIAAAAAAAAA6pWSiwtyYgvyc9OzVOyUjJLNE0yMTAyNTJIMkxJNDVMTjFPTEkyMEg0S7I0MzAwUKoFAAAA//8DAMBx/wwxAAAA",
+          "string": ""
         },
         "headers": {
           "Accept": [
@@ -93,12 +94,13 @@
           ]
         },
         "method": "GET",
-        "uri": "https://devapi.currencycloud.com/v2/reference/payment_purpose_codes?currency=CNY"
+        "uri": "https://devapi.currencycloud.com/v2/reference/bank_details?identifier_type=iban&identifier_value=GB19TCCL00997901654515"
       },
       "response": {
         "body": {
+          "base64_string": "eyJpZGVudGlmaWVyX3ZhbHVlIjoiR0IxOVRDQ0wwMDk5NzkwMTY1NDUxNSIsImlkZW50aWZpZXJfdHlwZSI6ImliYW4iLCJhY2NvdW50X251bWJlciI6IkdCMTlUQ0NMMDA5OTc5MDE2NTQ1MTUiLCJiaWNfc3dpZnQiOiJUQ0NMR0IyMlhYWCIsImJhbmtfbmFtZSI6IlRIRSBDVVJSRU5DWSBDTE9VRCBMSU1JVEVEIiwiYmFua19icmFuY2giOiIiLCJiYW5rX2FkZHJlc3MiOiIxMiBTVEVXQVJEIFNUUkVFVCAgVEhFIFNURVdBUkQgQlVJTERJTkcgRkxPT1IgMCIsImJhbmtfY2l0eSI6IkxPTkRPTiIsImJhbmtfc3RhdGUiOiJMT05ET04iLCJiYW5rX3Bvc3RfY29kZSI6IkUxIDZGUSIsImJhbmtfY291bnRyeSI6IlVOSVRFRCBLSU5HRE9NIiwiYmFua19jb3VudHJ5X0lTTyI6IkdCIiwiY3VycmVuY3kiOm51bGx9",
           "encoding": "utf-8",
-          "string": "{\"purpose_codes\":[{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"current_account_payment\",\"purpose_description\":\"Payment to Current Account\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"services\",\"purpose_description\":\"Trade Settlement for Services\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"donations\",\"purpose_description\":\"Charity Donation\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"goods\",\"purpose_description\":\"Trade Settlement for Goods\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"capital_account_payment\",\"purpose_description\":\"Payment to Capital Account\"}]}"
+          "string": ""
         },
         "headers": {
           "Connection": [
@@ -130,7 +132,7 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.currencycloud.com/v2/reference/payment_purpose_codes?currency=CNY"
+        "url": "https://devapi.currencycloud.com/v2/reference/bank_details?identifier_type=iban&identifier_value=GB19TCCL00997901654515"
       }
     }
   ],

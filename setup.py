@@ -10,14 +10,14 @@ from setuptools import setup
 
 setup(
     name='currency_cloud',
-    version='4.0.3',
+    version='4.5.0',
     license='MIT',
     description="Python SDK for the Currencycloud API.",
     long_description='',
 
     author='Francesco Boffa',
     author_email='francesco.boffa@currencycloud.com',
-    url='https://connect.currencycloud.com/documentation/getting-started/introduction',
+    url='https://github.com/CurrencyCloud/currencycloud-python',
 
     packages=find_packages('src'),
     package_dir={'': 'src'},
@@ -36,13 +36,12 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 
     keywords=[],
-    install_requires=['requests', 'PyYAML', 'deprecation', 'pytest', 'mock', 'requests-mock', 'betamax',
-                      'betamax-serializers'],
+    install_requires=['requests', 'PyYAML', 'deprecation'],
+    tests_require=['pytest', 'mock', 'requests-mock', 'betamax', 'betamax-serializers'],
     test_suite='tests'
 )

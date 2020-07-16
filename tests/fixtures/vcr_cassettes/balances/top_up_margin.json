@@ -24,7 +24,7 @@
             "application/x-www-form-urlencoded"
           ],
           "User-Agent": [
-            "CurrencyCloudSDK/2.0 Python/4.5.0"
+            "CurrencyCloudSDK/2.0 Python/4.3.7"
           ]
         },
         "method": "POST",
@@ -73,7 +73,7 @@
       "request": {
         "body": {
           "encoding": "utf-8",
-          "string": ""
+          "string": "currency=GBP&amount=450"
         },
         "headers": {
           "Accept": [
@@ -92,13 +92,13 @@
             "deadbeefdeadbeefdeadbeefdeadbeef"
           ]
         },
-        "method": "GET",
-        "uri": "https://devapi.currencycloud.com/v2/reference/payment_purpose_codes?currency=CNY"
+        "method": "POST",
+        "uri": "https://devapi.currencycloud.com/v2/balances/top_up_margin"
       },
       "response": {
         "body": {
           "encoding": "utf-8",
-          "string": "{\"purpose_codes\":[{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"current_account_payment\",\"purpose_description\":\"Payment to Current Account\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"services\",\"purpose_description\":\"Trade Settlement for Services\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"donations\",\"purpose_description\":\"Charity Donation\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"goods\",\"purpose_description\":\"Trade Settlement for Goods\"},{\"currency\":\"CNY\",\"entity_type\":\"company\",\"purpose_code\":\"capital_account_payment\",\"purpose_description\":\"Payment to Capital Account\"}]}"
+          "string": "{\"account_id\": \"6c046c51-2387-4004-8e87-4bf97102e36d\",\"currency\": \"GBP\",\"transferred_amount\": \"450.0\",\"transfer_completed_at\": \"2007-11-19T08:37:48-06:00\"}"
         },
         "headers": {
           "Connection": [
@@ -130,9 +130,10 @@
           "code": 200,
           "message": "OK"
         },
-        "url": "https://devapi.currencycloud.com/v2/reference/payment_purpose_codes?currency=CNY"
+        "url": "https://devapi.currencycloud.com/v2/balances/top_up_margin"
       }
     }
   ],
   "recorded_with": "betamax/0.8.1"
 }
+
