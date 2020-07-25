@@ -1,30 +1,33 @@
 # currencycloud-python
 [![PyPi Status](https://img.shields.io/pypi/v/currency-cloud.svg)](https://pypi.python.org/pypi/currency-cloud)
-[![Build Status](https://travis-ci.org/EAddario/python-master.svg?branch=master)](https://travis-ci.org/github/EAddario/python-master)
+[![Build Status](https://travis-ci.org/Addario-org/python-master.svg?branch=master)](https://travis-ci.org/github/Addario-org/python-master)
 
-# Currencycloud
-This is the official Python SDK for v2 of Currencycloud's API.
-Additional documentation for each API endpoint can be found at
-[developer.currencycloud.com](https://developer.currencycloud.com/documentation/getting-started/introduction/).
-If you have any queries or you require support, please contact our
+# Currencycloud API v2 Python client
+
+## Version: 4.5.0-ea (FORK)
+This is a **FORK** from  official [Python SDK for v2 of Currencycloud's API.][original] While it tries to keep in sync with the upstream version, it does also include enhancements and modifications ranging from bugfixes to usability features.
+
+Additional documentation for each API endpoint can be found at [developer.currencycloud.com][docs].
+
+If you have any queries or you require support, please contact their
 development team at development@currencycloud.com
 
 The full source code, tests and examples can be always found on
-[github](https://github.com/CurrencyCloud/currencycloud-python).
+[github][repo].
 
 ## Installation
 We support installation using standard Python "distutils" or
 "setuptools" methodologies. An overview of potential setups is as
 follows:
--  **pip** - [pip](http://pypi.python.org/pypi/pip/) is an installer
+-  **pip** - [pip][inst] is an installer
    that rides on top of setuptools or distribute, replacing the usage of
    easy\_install. It is often preferred for its simpler mode of usage.
 -  **Plain Python Distutis** - The library can be installed with a clean
    Python install using the services provided via Python Distutils,
-   using the setup.py script.
+   using the setup<span>.py script.
 -  **Setuptools or Distribute** - When using
-   [setuptools](https://pypi.python.org/pypi/setuptools/), the
-   library can be installed via setup.py or easy_install.
+   [setuptools][tools], the
+   library can be installed via setup<span>.py or easy_install.
 
 ### Install via pip
 When pip is available, the distribution can be downloaded from PyPi and
@@ -36,17 +39,16 @@ installed in one step:
 This command will download the latest released version of the library
 from the Python Cheese Shop and install it to your system.
 
-### Install using setup.py
-Otherwise, you can install from the distribution using the setup.py
+### Install using setup<span>.py
+Otherwise, you can install from the distribution using the setup<span>.py
 script:
 ```
   python setup.py install
 ```
 
 ## Supported Python versions
-This library aims to support and is [tested](https://travis-ci.org/CurrencyCloud/currencycloud-python)
+This library aims to support and is [tested][travis]
 under the following Python implementations:
--  CPython 2.7
 -  CPython 3.4
 -  CPython 3.5
 -  CPython 3.6
@@ -169,7 +171,7 @@ When troubleshooting API calls with Currencycloud support, including
 the full error in any correspondence can be very helpful.
 
 ## Development
-To manage Python environments and dependencies we use [pipenv](https://pipenv.readthedocs.org/en/latest/) and [tox](https://tox.readthedocs.org/en/latest/) to run the tests. Both can be easily installed with pip.
+To manage Python environments and dependencies we use [pipenv][env] and [tox][tx] to run the tests. Both can be easily installed with pip.
 ```
   pip install pipenv
   pip install tox
@@ -233,5 +235,15 @@ Once a feature has been marked as deprecated, we no longer develop the code or i
 We actively support the latest version of the SDK. We support the immediate previous version on best-efforts basis. All other versions are no longer supported nor maintained.
 
 ## Copyright
-Copyright (c) 2015-2019 Currencycloud. See [LICENSE](LICENSE.md) for
-details.
+Copyright  &copy; 2015-2020 Currencycloud. See [LICENSE][license] for details.
+Copyright &copy; modifications 2020, Ed Addario
+
+[original]: https://github.com/CurrencyCloud/currencycloud-python
+[docs]:      https://connect.currencycloud.com/documentation/getting-started/introduction
+[repo]:     https://github.com/CurrencyCloud/currencycloud-python
+[inst]:     http://pypi.python.org/pypi/pip/
+[tools]:    https://pypi.python.org/pypi/setuptools/
+[travis]:   https://travis-ci.org/github/Addario-org/python-master
+[env]:      https://pipenv.readthedocs.org/en/latest/
+[tx]:       https://tox.readthedocs.org/en/latest/
+[license]:  LICENSE.md
