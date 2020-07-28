@@ -5,7 +5,7 @@
 
 # Currencycloud API v2 Python client
 
-## Version: 4.5.0-ea (FORK)
+## Version: 4.5.0.post1 (FORK)
 This is a **FORK** from  official [Python SDK for v2 of Currencycloud's API.][original] While it tries to keep in sync with the upstream version, it does also include enhancements and modifications ranging from bugfixes to usability features.
 
 Additional documentation for each API endpoint can be found at [developer.currencycloud.com][docs].
@@ -221,7 +221,7 @@ Once a feature has been marked as deprecated, we no longer develop the code or i
 ```
 
 # Release History
-* [4.5.0-ea] - Create fork
+* [4.5.0.post1] - Create fork
 * [4.5.0] - Add top-up margin balance endpoint
 * [4.4.1] - Add funding accounts endpoint
 * [4.3.7] - Update payments endpoints for payment fee parameters
