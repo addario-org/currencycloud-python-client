@@ -10,7 +10,7 @@ from setuptools import setup
 
 setup(
     name='currencycloud-python-client',
-    version='4.5.0-ea',
+    version='4.5.0.post1',
     license='MIT',
     description="Currencycloud API v2 Python client (FORK)",
     long_description='Fork of the official Python SDK for v2 of Currencycloud\'s API',
