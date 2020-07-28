@@ -1,6 +1,7 @@
-# currencycloud-python
-[![PyPi Status](https://img.shields.io/pypi/v/currency-cloud.svg)](https://pypi.python.org/pypi/currency-cloud)
-[![Build Status](https://travis-ci.org/Addario-org/python-master.svg?branch=master)](https://travis-ci.org/github/Addario-org/python-master)
+[![Build Status](https://travis-ci.org/addario-org/currencycloud-python-client.svg?branch=master)](https://travis-ci.org/github/addario-org/currencycloud-python-client)
+[![Issues](https://img.shields.io/github/issues/addario-org/currencycloud-python-client)](https://github.com/addario-org/currencycloud-python-client/issues)
+[![License](https://img.shields.io/github/license/addario-org/currencycloud-python-client)](https://github.com/addario-org/currencycloud-python-client/blob/master/LICENSE.md)
+[![Last Commit](https://img.shields.io/github/last-commit/addario-org/currencycloud-python-client)](https://github.com/addario-org/currencycloud-python-client/commits/master)
 
 # Currencycloud API v2 Python client
 
@@ -33,7 +34,7 @@ follows:
 When pip is available, the distribution can be downloaded from PyPi and
 installed in one step:
 ```
-  pip install currency-cloud
+  pip install currencycloud-python-client
 ```
 
 This command will download the latest released version of the library
@@ -220,6 +221,7 @@ Once a feature has been marked as deprecated, we no longer develop the code or i
 ```
 
 # Release History
+* [4.5.0-ea] - Create fork
 * [4.5.0] - Add top-up margin balance endpoint
 * [4.4.1] - Add funding accounts endpoint
 * [4.3.7] - Update payments endpoints for payment fee parameters

@@ -9,15 +9,15 @@ from setuptools import find_packages
 from setuptools import setup
 
 setup(
-    name='currency_cloud',
-    version='4.5.0',
+    name='currencycloud-python-client',
+    version='4.5.0-ea',
     license='MIT',
-    description="Python SDK for the Currencycloud API.",
-    long_description='',
+    description="Currencycloud API v2 Python client (FORK)",
+    long_description='Fork of the official Python SDK for v2 of Currencycloud\'s API',
 
-    author='Francesco Boffa',
-    author_email='francesco.boffa@currencycloud.com',
-    url='https://github.com/CurrencyCloud/currencycloud-python',
+    author='Francesco Boffa, Ed Addario',
+    author_email='francesco.boffa@currencycloud.com, eaddario@hotmail.com',
+    url='https://github.com/addario-org/currencycloud-python-client',
 
     packages=find_packages('src'),
     package_dir={'': 'src'},

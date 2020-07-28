@@ -9,7 +9,7 @@ from currencycloud.config import Config
 from currencycloud.http import Http
 from currencycloud.version import VERSION
 
-__title__ = 'currencycloud'
+__title__ = 'currencycloud-python-client'
 __version__ = VERSION
 __license__ = 'MIT'
-__copyright__ = 'Copyright 2015-2019 Currencycloud'
+__copyright__ = 'Copyright 2015-2020 Currencycloud'
