@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/addario-org/currencycloud-python-client.svg?branch=master)](https://travis-ci.org/github/addario-org/currencycloud-python-client)
+[![Pypi Package](https://img.shields.io/badge/pypi%20package-v4.5.0.post1-brightgreen)](https://pypi.org/project/currencycloud-python-client/)
 [![Issues](https://img.shields.io/github/issues/addario-org/currencycloud-python-client)](https://github.com/addario-org/currencycloud-python-client/issues)
 [![License](https://img.shields.io/github/license/addario-org/currencycloud-python-client)](https://github.com/addario-org/currencycloud-python-client/blob/master/LICENSE.md)
 [![Last Commit](https://img.shields.io/github/last-commit/addario-org/currencycloud-python-client)](https://github.com/addario-org/currencycloud-python-client/commits/master)
